@@ -77,7 +77,7 @@ body {
     padding: 8px 16px 16px 16px;
      
     border: none;
-    background: #333;
+     background: #5b5a5a;
     color: #1500ff;
     text-transform: uppercase;
     letter-spacing: .09em;
@@ -91,4 +91,13 @@ body {
   .boton_enviar_form{
     padding: 15px;
     margin: 10px;
+  }
+
+
+
+  .requiredAlert {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    padding-top: 5px;
   }

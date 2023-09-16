@@ -7,6 +7,7 @@ export function fechaNoPosterior(control: AbstractControl): { [key: string]: boo
   if (fechaNacimiento > fechaActual) {
     return { 'fechaNoPosterior': true };
   }
-  console.log("\n\n\nfecah\n\n\n");
+
+  
   return null;
 }

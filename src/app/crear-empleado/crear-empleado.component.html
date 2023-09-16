@@ -9,30 +9,62 @@
        
         <li>
           <label >Nombre:</label>
-          <input type="text" placeholder="Nombre del empeleado" formControlName="nombre">
+          <input type="text" placeholder="Nombre del empeleado" formControlName="nombre" required>        
         </li>
+        <p *ngIf = "agregarEmpleado.controls['nombre'].touched && agregarEmpleado.controls['nombre'].errors?.['required']" class = "requiredAlert">
+          El campo "nombre" es obligatorio
+        </p>
+
+
         <li>
           <label>Apellido:</label>
           <input type="text" id="last-name" placeholder="Apellido del empleado" formControlName="apellido">
         </li>
+        <p *ngIf = "agregarEmpleado.controls['apellido'].touched && agregarEmpleado.controls['apellido'].errors?.['required']" class = "requiredAlert">
+            El campo "apellido" es obligatorio
+        </p>
+
+
          <li>
           <label>DNI:</label>
-          <input type="number" placeholder="Número de documento">
+          <input type="number" placeholder="Número de documento" formControlName="nroDocumento">
         </li>
+        <p *ngIf = "agregarEmpleado.controls['nroDocumento'].touched && agregarEmpleado.controls['nroDocumento'].errors?.['required']" class = "requiredAlert">
+          El campo "nroDocumento" es obligatorio
+        </p>
+
+
         <li>
           <label>Email</label>
-          <input type="email" id="email" placeholder="Mail del empledo.">
+          <input type="email" id="email" placeholder="Mail del empleado" formControlName="email">
         </li>
+        <p *ngIf="agregarEmpleado.get('email')?.hasError('required') && agregarEmpleado.get('email')?.touched" class="requiredAlert">
+          El campo "email" es obligatorio
+        </p>
+        <p *ngIf="agregarEmpleado.get('email')?.hasError('email') && agregarEmpleado.get('email')?.touched" class="requiredAlert">
+          El formato del correo electrónico no es correcto. Un formato correcto sería: ejemplo@mail.com
+        </p>
+
         <li>
           <label>Fecha de Nacimiento</label>
           <input type="date" id="email" formControlName="fechaNacimiento">      
         </li>
+        <p *ngIf = "agregarEmpleado.controls['fechaNacimiento'].touched && agregarEmpleado.controls['fechaNacimiento'].errors?.['required']" class = "requiredAlert">
+          El campo "fecha de Nacimiento" es obligatorio
+       </p>
+
+
         <li>
           <label>Fecha de Ingreso</label>
-          <input type="date" id="email">       
+          <input type="date" id="email" formControlName="fechaIngreso">       
         </li>
+        <p *ngIf = "agregarEmpleado.controls['fechaIngreso'].touched && agregarEmpleado.controls['fechaIngreso'].errors?.['required']" class = "requiredAlert">
+          El campo "fechaIngreso" es obligatorio
+        </p>
+
+
         <li>
-          <button type="submit" class="boton_enviar_form" (click)="agregarEmpleadoNuevo()"> Enviar Formulario</button>
+          <button type="submit" class="btn btn-primary" (click)="agregarEmpleadoNuevo()" [disabled] = "!agregarEmpleado.valid"> Enviar Formulario</button>
         </li>
       </ul>
     </form>

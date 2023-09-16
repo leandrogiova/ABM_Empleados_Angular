@@ -15,12 +15,12 @@ export class CrearEmpleadoComponent {
     this.agregarEmpleado = this.fb.group({
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
-      dni: new FormControl('', [Validators.required]),
+      nroDocumento: new FormControl('', [Validators.required]),
 
       email: new FormControl('', [Validators.required, Validators.email]),
 
       fechaNacimiento: new FormControl('', [Validators.required, fechaNoPosterior]),
-      fechaCreacion: new FormControl('', [Validators.required]),
+      fechaIngreso: new FormControl('', [Validators.required]),
 
     });
   }
@@ -30,4 +30,10 @@ export class CrearEmpleadoComponent {
   public agregarEmpleadoNuevo(){
     console.log("agregarEmpleadoNuevo: ", this.agregarEmpleado);
   }
+
+
+
+
+
+
 }
