@@ -1,5 +1,42 @@
 # ABMEmpleados
 
+Se va ha creado 4 componentes principales:
+ 1- Para agregar un nuevo empleado
+ 2 - Para ver a todos los empleados y para buscar un empleado
+ 3 - Para Editar algun empleado
+
+ No se ha ningun modulo ya que, para este proyecto en especificado se considero no crear un modulo en espefifico
+
+
+Al ingresar en el componente "ver-lista-empleado", este commponente se abrira en una nueva pestaña del navegador web para mayor comodidad del usuario.
+
+Se ha creado una clase particular "empleadoValidators" para validar que no se ingrese una fecha posterior al dia actual. Y que no se pueda ingredar nombre con otros caracteres que no sean letras.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ABMEmpleados
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
 ## Development server

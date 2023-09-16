@@ -1,0 +1,39 @@
+<h2>
+    Crear nuevo Empleado
+</h2>
+
+
+<div class="container">
+    <form [formGroup] = "agregarEmpleado">
+      <ul class="flex-outer">
+       
+        <li>
+          <label >Nombre:</label>
+          <input type="text" placeholder="Nombre del empeleado" formControlName="nombre">
+        </li>
+        <li>
+          <label>Apellido:</label>
+          <input type="text" id="last-name" placeholder="Apellido del empleado" formControlName="apellido">
+        </li>
+         <li>
+          <label>DNI:</label>
+          <input type="number" placeholder="Número de documento">
+        </li>
+        <li>
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Mail del empledo.">
+        </li>
+        <li>
+          <label>Fecha de Nacimiento</label>
+          <input type="date" id="email" formControlName="fechaNacimiento">      
+        </li>
+        <li>
+          <label>Fecha de Ingreso</label>
+          <input type="date" id="email">       
+        </li>
+        <li>
+          <button type="submit" class="boton_enviar_form" (click)="agregarEmpleadoNuevo()"> Enviar Formulario</button>
+        </li>
+      </ul>
+    </form>
+  </div>
