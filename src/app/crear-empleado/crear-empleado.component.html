@@ -2,6 +2,7 @@
     Crear nuevo Empleado
 </h2>
 
+<button class="btn btn-primary" (click)="agregarEmpleadoNuevo()"> Ver productos </button>
 
 <div class="container">
     <form [formGroup] = "agregarEmpleado">
@@ -9,10 +10,14 @@
        
         <li>
           <label >Nombre:</label>
-          <input type="text" placeholder="Nombre del empeleado" formControlName="nombre" required>        
+          <input type="text" id="nombre" placeholder="Nombre del empeleado" formControlName="nombre" required>        
         </li>
         <p *ngIf = "agregarEmpleado.controls['nombre'].touched && agregarEmpleado.controls['nombre'].errors?.['required']" class = "requiredAlert">
           El campo "nombre" es obligatorio
+        </p>
+        <p *ngIf=" agregarEmpleado.controls['nombre'].touched 
+         && agregarEmpleado.get('nombre')?.hasError('nombreNoValido')" class="requiredAlert">
+          El nombre solo debe contener letras y espacios
         </p>
 
 
@@ -45,23 +50,25 @@
           El formato del correo electrónico no es correcto. Un formato correcto sería: ejemplo@mail.com
         </p>
 
-        <li>
-          <label>Fecha de Nacimiento</label>
-          <input type="date" id="email" formControlName="fechaNacimiento">      
-        </li>
-        <p *ngIf = "agregarEmpleado.controls['fechaNacimiento'].touched && agregarEmpleado.controls['fechaNacimiento'].errors?.['required']" class = "requiredAlert">
-          El campo "fecha de Nacimiento" es obligatorio
-       </p>
-
 
         <li>
-          <label>Fecha de Ingreso</label>
-          <input type="date" id="email" formControlName="fechaIngreso">       
+          <label>Fecha de Nacimiento:</label>
+          <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento">
         </li>
-        <p *ngIf = "agregarEmpleado.controls['fechaIngreso'].touched && agregarEmpleado.controls['fechaIngreso'].errors?.['required']" class = "requiredAlert">
-          El campo "fechaIngreso" es obligatorio
+        <p *ngIf="agregarEmpleado.get('fechaNacimiento')?.hasError('fechaNoPosterior')" class="requiredAlert">
+          La fecha de nacimiento no puede ser posterior a la fecha actual
+        </p>
+        <p *ngIf="agregarEmpleado.get('fechaNacimiento')?.hasError('edadNoValida')" class="requiredAlert">
+          La edad del empleado debe ser mayor o igual a 18 años
         </p>
 
+        <li>
+          <label>Fecha de Ingreso:</label>
+          <input type="date" id="fechaIngreso" formControlName="fechaIngreso">
+        </li>
+        <p *ngIf="agregarEmpleado.get('fechaIngreso')?.hasError('fechaNoPosterior')" class="requiredAlert">
+          La fecha de ingreso no puede ser posterior a la fecha actual
+        </p>
 
         <li>
           <button type="submit" class="btn btn-primary" (click)="agregarEmpleadoNuevo()" [disabled] = "!agregarEmpleado.valid"> Enviar Formulario</button>
