@@ -9,6 +9,9 @@ import { VerListaEmpleadosComponent } from './ver-lista-empleados/ver-lista-empl
 import { ActualizarEmpleadoComponent } from './actualizar-empleado/actualizar-empleado.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalErrorComponent } from './modal-error/modal-error.component';
+import { ModalEmpleadoEnviadoComponent } from './crear-empleado/modal-empleado-enviado/modal-empleado-enviado.component';
+
 
 
 @NgModule({
@@ -16,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     CrearEmpleadoComponent,
     VerListaEmpleadosComponent,
-    ActualizarEmpleadoComponent
+    ActualizarEmpleadoComponent,
+    ModalErrorComponent,
+    ModalEmpleadoEnviadoComponent
   ],
   imports: [
     BrowserModule,

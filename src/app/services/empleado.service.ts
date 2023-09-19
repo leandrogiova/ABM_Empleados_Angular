@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Empleado } from '../models/Empleado';
+import { Error } from '../models/Error';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { EventEmitter } from '@angular/core';
 
 
 @Injectable({
@@ -11,6 +13,8 @@ import { environment } from 'src/environments/environment';
 export class EmpleadoService {
 
   endpoint: string = 'empleado';
+  $modalShowEmpleadoEnviado = new EventEmitter<boolean>();
+  $modalShowErrorCrearEmpleado = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) {
 

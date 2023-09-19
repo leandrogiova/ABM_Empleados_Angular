@@ -1,0 +1,25 @@
+<ng-container *ngIf="showmodalEmpleandoEnv">
+
+    <div class="modalGeneral" #salirDelModal>
+        <div class="ModalContent">
+            <div class="Modalcheader">
+                  <div class="card">
+
+                    <div class="card-header nombreEmpleado">
+                      {{empleadoModal.nombre}} {{empleadoModal.apellido}}
+                    </div>
+                    <ul >
+                        <li class="list-group-item"> DNI: {{empleadoModal.nroDocumento}}</li>
+                        <li class="list-group-item"> Email: {{empleadoModal.email}}</li>
+                        <li class="list-group-item"> Fecha de Nacimiento: {{empleadoModal.fechaNacimiento}}</li>
+                        <li class="list-group-item"> Fecha de Ingreso: {{empleadoModal.fechaIngreso}}</li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="ModalContainer">
+                <button class="btn btn-primary" (click)="cerrarModal()"> Aceptar </button>
+
+            </div>
+        </div>
+    </div>
+</ng-container>

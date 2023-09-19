@@ -2,8 +2,6 @@
     Crear nuevo Empleado
 </h2>
 
-<button class="btn btn-primary" (click)="agregarEmpleadoNuevo()"> Ver productos </button>
-
 <div class="container">
     <form [formGroup] = "agregarEmpleado">
       <ul class="flex-outer">
@@ -76,3 +74,6 @@
       </ul>
     </form>
   </div>
+  <app-modal-empleado-enviado *ngIf="modalEmpleadoEnviado"  [empleadoModal]= "empleado"> </app-modal-empleado-enviado>
+
+  <app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error>
