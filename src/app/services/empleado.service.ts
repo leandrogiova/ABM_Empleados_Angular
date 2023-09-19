@@ -44,4 +44,11 @@ export class EmpleadoService {
     return this.http.get<Array<Empleado>>(url);
    }
 
+
+   public actualizarEmpleado(empleado: Empleado): Observable<any> {
+    let url = environment.apiEmpleados + this.endpoint + "/" + empleado.id;
+    console.log("url: " + url);
+    return this.http.put(url, empleado);
+  }
+
 }

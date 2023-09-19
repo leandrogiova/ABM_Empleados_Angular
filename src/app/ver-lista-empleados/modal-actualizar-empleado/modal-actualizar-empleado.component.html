@@ -1,0 +1,209 @@
+
+<ng-container *ngIf = "showModalActualizarEmpleado">
+
+    <div class="modalGeneral" #salirDelModal>
+        <div class="ModalContent">
+            <div class="Modalcheader">
+                  <div class="card">              
+                    <h3> Actualizar Empleado </h3>
+                    <form [formGroup]="actualizarEmpleado">
+
+
+
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label class="col-form-label esp">Nombre: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="text" class="form-control" formControlName="nombre">
+                            </div>                     
+                            <p *ngIf = "actualizarEmpleado.controls['nombre'].touched && actualizarEmpleado.controls['nombre'].errors?.['required']" class = "requiredAlert">
+                                El campo "nombre" es obligatorio
+                              </p>
+                              <p *ngIf=" actualizarEmpleado.controls['nombre'].touched 
+                               && actualizarEmpleado.get('nombre')?.hasError('nombreNoValido')" class="requiredAlert">
+                                El nombre solo debe contener letras y espacios
+                              </p>
+                        </div>
+
+
+
+
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label class="col-form-label esp">Apellido: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="text" class="form-control"  formControlName="apellido">
+                            </div>                     
+                            <p *ngIf = "actualizarEmpleado.controls['apellido'].touched && actualizarEmpleado.controls['apellido'].errors?.['required']" class = "requiredAlert">
+                                El campo "apellido" es obligatorio
+                              </p>
+                              <p *ngIf = "actualizarEmpleado.controls['apellido'].touched 
+                               && actualizarEmpleado.get('apellido')?.hasError('nombreNoValido')" class="requiredAlert">
+                                El nombre solo debe contener letras y espacios
+                              </p>
+                        </div>
+
+
+
+                          <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label  class="col-form-label esp">DNI: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="number" class="form-control" formControlName="nroDocumento" >
+                            </div>
+                            <p *ngIf = "actualizarEmpleado.controls['nroDocumento'].touched && actualizarEmpleado.controls['nroDocumento'].errors?.['required']" class = "requiredAlert">
+                                El campo "nroDocumento" es obligatorio
+                              </p>
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+                          <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label class="col-form-label esp">E-Mail: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="email" class="form-control" formControlName="email">
+                            </div>
+                            <p *ngIf = "actualizarEmpleado.get('email')?.hasError('required') && actualizarEmpleado.get('email')?.touched" class="requiredAlert">
+                                El campo "email" es obligatorio
+                              </p>
+                              <p *ngIf = "actualizarEmpleado.get('email')?.hasError('email') && actualizarEmpleado.get('email')?.touched" class="requiredAlert">
+                                El formato del correo electrónico no es correcto. Un formato correcto sería: ejemplo@mail.com
+                              </p>
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label  class="col-form-label esp">Fecha de Nacimiento: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="date" class="form-control" formControlName="fechaNacimiento">
+                            </div>
+                            <p *ngIf = "actualizarEmpleado.get('fechaNacimiento')?.hasError('fechaNoPosterior')" class="requiredAlert">
+                                La fecha de nacimiento no puede ser posterior a la fecha actual
+                              </p>
+                              <p *ngIf = "actualizarEmpleado.get('fechaNacimiento')?.hasError('edadNoValida')" class="requiredAlert">
+                                La edad del empleado debe ser mayor o igual a 18 años
+                              </p>
+                          </div>
+
+
+                          
+
+
+
+
+
+
+
+
+
+
+
+                          <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label class="col-form-label esp">Fecha de Ingreso: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="date" class="form-control" formControlName="fechaIngreso">
+                            </div>
+                            <p *ngIf = "actualizarEmpleado.get('fechaIngreso')?.hasError('fechaNoPosterior')" class="requiredAlert">
+                                La fecha de ingreso no puede ser posterior a la fecha actual
+                              </p>
+                          </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="ModalContainer">
+                <button class="btn btn-primary" (click)="cerrarModal()" [disabled] = "!actualizarEmpleado.valid"> Actualizar Empleado </button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ng-container *ngIf = "showModalActualizarEmpleado">
+
+    <div class="modalGeneral" #salirDelModal>
+        <div class="ModalContent">
+            <div class="Modalcheader">
+                  <div class="card">              
+                    <form>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label for="inputPassword6" class="col-form-label">Nombre: </label>
+                            </div>
+                            <div class="col-auto">
+                              <input type="text" class="form-control" placeholder="{{empleadoModal.nombre}}">
+                            </div>
+                            <div class="col-auto">
+                              <span id="passwordHelpInline" class="form-text">
+                                Ingrese el nombre del Empleado para cambiar su nombre
+                              </span>
+                            </div> 
+                          </div>
+                    </form>
+                </div>
+            </div>
+            <div class="ModalContainer">
+                <button class="btn btn-primary" (click)="cerrarModal()"> Actualizar Empleado </button>
+            </div>
+        </div>
+    </div>
+</ng-container> -->

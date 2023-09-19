@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalErrorComponent } from './modal-error/modal-error.component';
 import { ModalEmpleadoEnviadoComponent } from './crear-empleado/modal-empleado-enviado/modal-empleado-enviado.component';
+import { ModalEliminarEmpleadoComponent } from './ver-lista-empleados/modal-eliminar-empleado/modal-eliminar-empleado.component';
+import { ModalActualizarEmpleadoComponent } from './ver-lista-empleados/modal-actualizar-empleado/modal-actualizar-empleado.component';
 
 
 
@@ -21,7 +23,9 @@ import { ModalEmpleadoEnviadoComponent } from './crear-empleado/modal-empleado-e
     VerListaEmpleadosComponent,
     ActualizarEmpleadoComponent,
     ModalErrorComponent,
-    ModalEmpleadoEnviadoComponent
+    ModalEmpleadoEnviadoComponent,
+    ModalEliminarEmpleadoComponent,
+    ModalActualizarEmpleadoComponent
   ],
   imports: [
     BrowserModule,

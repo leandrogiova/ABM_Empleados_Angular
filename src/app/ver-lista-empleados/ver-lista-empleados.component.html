@@ -1,3 +1,56 @@
-<p>ver-lista-empleados works!</p>
+<h2>
+    Ver Lista de Empleados
+</h2>
 
-<!-- <button class="btn btn-primary" (click)="verEmpleados()"> Actualizar </button> -->
+<button class = "btn btn-primary" (click) = "verEmpleados"> Actualizar Lista </button>
+<p>
+  Mantenga la lista siempre actualizada
+<p>
+
+<table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+
+        <th>Dro. Documento</th>
+        <th>E-mail</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Fecha de Ingreso </th>
+        <th>Fecha de Creacion</th>
+        
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let empleado of listaEmpleados">
+        <td><strong>{{empleado.id}}</strong></td>
+        <td>{{empleado.nombre}} </td>
+        <td>{{empleado.apellido}}</td>
+        <td>{{empleado.nroDocumento}}</td>
+
+        <td>{{empleado.email}}</td>
+        <td>{{empleado.fechaNacimiento}}</td>
+        <td>{{empleado.fechaIngreso}}</td>
+        <td>{{empleado.fechaCreacion}}</td>
+        
+
+        <button class="btn btn-sm btn-danger" > Eliminar </button>
+        <button class="btn btn-secondary btn-sm espacio" (click)="irActualizarEmpleado(empleado)" > Modificar </button>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+<app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error>
+
+
+<app-modal-actualizar-empleado *ngIf ="showModalActualizar" [empleadoModal] = "empleado"> </app-modal-actualizar-empleado>
+
+<!-- 
+<app-modal-empleado-enviado *ngIf="modalEmpleadoEnviado"  [empleadoModal]= "empleado"> </app-modal-empleado-enviado>
+
+<app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error> -->
+
