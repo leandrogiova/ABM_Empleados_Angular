@@ -25,8 +25,8 @@
         justify-content: space-between;
 
 
-        background-image: radial-gradient(#b6b6bf 0.8500000000000001px, #ffffff 0.8500000000000001px);
-        background-color: #ffffff;
+        background-image: radial-gradient(#df4c56 0.8500000000000001px, #df4c56 0.8500000000000001px);
+        background-color: #df4c56;
         opacity: 1;
         background-size: 17px 17px;
         background-size: 100%;
@@ -65,4 +65,9 @@ svg {
     margin-right: 10% ;
     margin-top: 5%;
 
+}
+
+.butonError {
+ padding: auto;
+ padding-top: 5px;
 }

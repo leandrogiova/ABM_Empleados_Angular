@@ -22,14 +22,22 @@ export class ModalErrorComponent implements OnInit{
     this.errorInModal = new Error();
    }
 
-  
+   
+  /*
+   * Funcio ngOnInit, ModalErrorComponent implements OnInit
+   * Inicializa la varible " showmodalError " para controlar cuando se muestra o se oculta el htlm para mostrar el modal
+  */
   ngOnInit(): void {
     this.empleadoService.$modalShowErrorCrearEmpleado.subscribe( (valor) => { this.showmodalError = valor }  );
-
-
   }
 
-  
+
+  /*
+   * Funcion cerrarModal
+   * Setea las variables "showmodalError" en false para ocultar el htlm
+   * Hace un emit para controlar la vista del modal
+   * Inicializa "errorInModal" para mantenerlo limpio
+   */  
   cerrarModal() {
     this.showmodalError = false;
     this.empleadoService.$modalShowErrorCrearEmpleado.emit(this.showmodalError);

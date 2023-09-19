@@ -4,18 +4,12 @@
         <div class="ModalContent">
             <div class="Modalcheader">
                 ERROR {{errorInModal.statusCode}} Error al intentar agregar un nuevo empleado.
-
-            
-
-
-        
             </div>
             <div class="ModalContainer">
                 <li>
                     {{errorInModal.statusMessage}}
                 </li>
-                <button class="btn btn-primary" (click)="cerrarModal()"> Aceptar </button>
-
+                <button class="btn btn-primary butonError" (click)="cerrarModal()"> Aceptar </button>
 
             </div>
         </div>

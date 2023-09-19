@@ -6,7 +6,7 @@ import { Empleado } from '../models/Empleado';
 import { Error } from '../models/Error';
 import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
-import { Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-crear-empleado',
@@ -53,9 +53,14 @@ export class CrearEmpleadoComponent implements OnInit {
    * Envia un empleado a la base de datos
    * Crea una variable empleado, setea los campos correspondientes con los datos del formulario
    * Envia el formulario a la base de datos, si sale todo OK resetea el formulario
+   * Antes de eso actualiza las variables "modalEmpleadoEnviado" y "showModalError".
+   * "modalEmpleadoEnviado" es una variable booleana para mostrar o ocultar un modal con los datos del empleado
+   * que se acaba de guardar en la base de datos.
+   * "showModalError" si al enviar el formulario el backEnd devuelve un error, esta varible setea
+   * la clase "Error" con el status y el mensaje del error que envia el BackEnd y muestra un modal con dicho error.
    * No recibe paramtros
    * No retorna ningun tipo
-   */  
+   */
   public agregarEmpleadoNuevo(){
     this.empleadoService.$modalShowEmpleadoEnviado.subscribe( (valor) => { this.modalEmpleadoEnviado = valor} );
 
@@ -74,20 +79,18 @@ export class CrearEmpleadoComponent implements OnInit {
         this.agregarEmpleado.reset();
 
 
-      this.modalEmpleadoEnviado = true;
-      this.empleadoService.$modalShowEmpleadoEnviado.emit(this.modalEmpleadoEnviado);
+        this.modalEmpleadoEnviado = true;
+        this.empleadoService.$modalShowEmpleadoEnviado.emit(this.modalEmpleadoEnviado);
       },
 
       error: (e) => {
-              this.error = new Error();
-              this.error.statusCode = e.status;
-              this.error.statusMessage = e.error.message;
-
-              this.showModalError = true;
-              this.empleadoService.$modalShowErrorCrearEmpleado.emit(this.showModalError);
-
+        this.error = new Error();
+        this.error.statusCode = e.status;
+        this.error.statusMessage = e.error.message;
+        this.showModalError = true;
+        this.empleadoService.$modalShowErrorCrearEmpleado.emit(this.showModalError);
       }
-    })
+    });
   }
 
 
