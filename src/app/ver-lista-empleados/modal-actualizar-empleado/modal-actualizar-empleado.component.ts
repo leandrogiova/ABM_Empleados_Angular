@@ -21,7 +21,7 @@ export class ModalActualizarEmpleadoComponent implements OnInit {
   actualizarEmpleado: FormGroup;
 
 
-  constructor(private fb: FormBuilder,private empleadoService: EmpleadoService){
+  constructor(private fb: FormBuilder, private empleadoService: EmpleadoService){
     this.empleadoModal = new Empleado();
     this.error = new Error();
 
@@ -39,6 +39,10 @@ export class ModalActualizarEmpleadoComponent implements OnInit {
   }
 
 
+  /*
+   * Actualiza la variable "showModalActualizarEmpleado" para mostrar o ocultar el modal
+   * Setea el formulario "actualizarEmpleado" para que los input del html muestren su valor
+   */
   ngOnInit(): void {
     this.empleadoService.$modalShowEmpleadoEnviado.subscribe( (result) => { this.showModalActualizarEmpleado = result } );
     
@@ -54,9 +58,15 @@ export class ModalActualizarEmpleadoComponent implements OnInit {
   /*
    * Funcion cerrarModal
    * Actualiza un empleado
-   * 
-   * 
-   * Reutiliza el observable "$modalShowErrorCrearEmpleado" para mostrar el modal del error
+   * Setea a la variable "empleadoModal" para enviar a la base de datos, la setea con los datos del formulario
+   * Hace la actualización atraves de http y la URL, llamando al EmpleadoService
+   * Si el backEnd responde todo bien no muestra nada
+   * Si el backEnd responde con un error lanza un modal con dicho error
+   * Importante: 
+   * Reutiliza el observable "$modalShowErrorCrearEmpleado" para mostrar el modal del errror
+   * Y reutiliza el observable "$modalShowEmpleadoEnviado" para mostrar/ocultar este modal
+   * No recibe parametros
+   * No tiene retorno 
    */
   cerrarModal(){
     this.empleadoModal.nroDocumento = this.actualizarEmpleado.get('nroDocumento')?.value;
@@ -65,10 +75,6 @@ export class ModalActualizarEmpleadoComponent implements OnInit {
     this.empleadoModal.email = this.actualizarEmpleado.get('email')?.value;
     this.empleadoModal.fechaNacimiento = this.actualizarEmpleado.get('fechaNacimiento')?.value;
     this.empleadoModal.fechaIngreso = this.actualizarEmpleado.get('fechaIngreso')?.value;
-
-    console.log("Actualizando empleado: " , this.actualizarEmpleado);
-
-
 
     this.empleadoService.actualizarEmpleado(this.empleadoModal).subscribe({
       next: (result) => {

@@ -53,6 +53,8 @@ export class VerListaEmpleadosComponent implements OnInit {
  * Retorna una lista de empleados " Array<Empleado> "
  */
 //TODO probar error con el backEnd apagado
+//TODO falta borrar un empleado
+//TODO ver quitar el tipo de rotorno " Array<Empleado> "
 public verEmpleados(): Array<Empleado>{
     this.empleadoService.obtenerEmpleados().subscribe({
       next: (result) => {

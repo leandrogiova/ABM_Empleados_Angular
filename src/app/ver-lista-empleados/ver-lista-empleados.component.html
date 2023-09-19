@@ -2,6 +2,8 @@
     Ver Lista de Empleados
 </h2>
 
+<!-- //TODO falta borrar un empleado !-->
+
 <button class = "btn btn-primary" (click) = "verEmpleados"> Actualizar Lista </button>
 <p>
   Mantenga la lista siempre actualizada
@@ -45,7 +47,6 @@
 
 
 <app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error>
-
 
 <app-modal-actualizar-empleado *ngIf ="showModalActualizar" [empleadoModal] = "empleado"> </app-modal-actualizar-empleado>
 
