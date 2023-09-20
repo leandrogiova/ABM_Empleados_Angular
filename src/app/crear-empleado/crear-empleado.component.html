@@ -26,6 +26,10 @@
         <p *ngIf = "agregarEmpleado.controls['apellido'].touched && agregarEmpleado.controls['apellido'].errors?.['required']" class = "requiredAlert">
             El campo "apellido" es obligatorio
         </p>
+        <p *ngIf=" agregarEmpleado.controls['apellido'].touched 
+         && agregarEmpleado.get('apellido')?.hasError('nombreNoValido')" class="requiredAlert">
+          El apellido solo debe contener letras y espacios
+        </p>
 
 
          <li>

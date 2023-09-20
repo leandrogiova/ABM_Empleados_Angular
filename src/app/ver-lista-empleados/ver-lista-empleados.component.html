@@ -4,7 +4,7 @@
 
 <!-- //TODO falta borrar un empleado !-->
 
-<button class = "btn btn-primary" (click) = "verEmpleados"> Actualizar Lista </button>
+<button class = "btn btn-primary" (click) = "verEmpleados()"> Actualizar Lista </button>
 <p>
   Mantenga la lista siempre actualizada
 <p>
@@ -38,7 +38,7 @@
         <td>{{empleado.fechaCreacion}}</td>
         
 
-        <button class="btn btn-sm btn-danger" > Eliminar </button>
+        <button class="btn btn-sm btn-danger" (click) = "eliminarEmpleado(empleado)"> Eliminar </button>
         <button class="btn btn-secondary btn-sm espacio" (click)="irActualizarEmpleado(empleado)" > Modificar </button>
 
       </tr>
@@ -46,9 +46,11 @@
   </table>
 
 
-<app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error>
+<app-modal-error *ngIf="showModalError"  [errorInModal] = "error"  > </app-modal-error>
 
 <app-modal-actualizar-empleado *ngIf ="showModalActualizar" [empleadoModal] = "empleado"> </app-modal-actualizar-empleado>
+
+<app-modal-eliminar-empleado *ngIf ="showModalEliminarEmpleado" [empleadoModal] = "empleado"> </app-modal-eliminar-empleado>
 
 <!-- 
 <app-modal-empleado-enviado *ngIf="modalEmpleadoEnviado"  [empleadoModal]= "empleado"> </app-modal-empleado-enviado>

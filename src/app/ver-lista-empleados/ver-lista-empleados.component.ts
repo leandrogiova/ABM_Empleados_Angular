@@ -19,8 +19,9 @@ export class VerListaEmpleadosComponent implements OnInit {
   listaEmpleados: Array<Empleado> = [];
 
   activarBoton: boolean = false;
-  @Output() error: Error;
+  error: Error;
   showModalError: boolean = false;
+  showModalEliminarEmpleado: boolean = false;
 
   @Output() empleado: Empleado;
   showModalActualizar: boolean = false; //Se reutiliza el observable $modalShowEmpleadoEnviado para mostrar/ocultar el modal de actualizar empleado
@@ -30,6 +31,7 @@ export class VerListaEmpleadosComponent implements OnInit {
   constructor(private empleadoService: EmpleadoService){
     this.empleado = new Empleado();
     this.error = new Error();
+
   }
 
 
@@ -37,10 +39,21 @@ export class VerListaEmpleadosComponent implements OnInit {
   /*
    * Reutiliza el observable $modalShowEmpleado con la variable showModalActualizar 
    * para mostrar/ocultar el modal de actualizar el empleado
+   * Tambien actualiza la variable showModalEliminarEmpleado que va a mostrar el modal para confirmar que se va a eliminar un empleado
    */
   ngOnInit(): void {
-    this.empleadoService.$modalShowEmpleadoEnviado.subscribe( (resp) => { this.showModalActualizar = resp } )
+
+
+    // this.empleadoService.listaEmpleadosActualizada.subscribe((result) => { this.listaEmpleados = result });
+
+
+    this.empleadoService.$modalShowEmpleadoEnviado.subscribe( (resp) => { this.showModalActualizar = resp } );
+    this.empleadoService.$modalShowEliminarEmpleado.subscribe( (resp) => { this.showModalEliminarEmpleado = resp } );
+
+
     this.verEmpleados();
+
+
   }
 
 
@@ -55,12 +68,12 @@ export class VerListaEmpleadosComponent implements OnInit {
 //TODO probar error con el backEnd apagado
 //TODO falta borrar un empleado
 //TODO ver quitar el tipo de rotorno " Array<Empleado> "
-public verEmpleados(): Array<Empleado>{
+public verEmpleados(){
     this.empleadoService.obtenerEmpleados().subscribe({
       next: (result) => {
         this.listaEmpleados = result;
+        console.log("rsult: " + result);
 
-        console.log(result);
       },
       error: (e) => {
         this.error = new Error();
@@ -72,9 +85,12 @@ public verEmpleados(): Array<Empleado>{
     });
 
     console.log("lista de empleados: ", this.listaEmpleados);
-    return this.listaEmpleados;
+
   }
 
+
+
+  
   /*
    * Funcion irActualizarEmpleado
    * Muestra el modal para actualizar un empleado en especifico
@@ -94,6 +110,23 @@ public verEmpleados(): Array<Empleado>{
   }
 
 
+
+  /*
+   * Funcion eliminarEmpleado
+   * Muestra el modal para confirma la eliminacion de un empleado en especifico
+   * Setea a la variable "empleado" con el empleado especifico
+   * Pone en true la variable "showModalEliminarEmpleado" para mostrar el modal
+   * A traves de la variable "  $modalShowEliminarEmpleado  " se va a mantener actualizadas las variables 
+   * para mostrar / ocultar el modal
+   * Recibe como parametro un Empleado
+   * No tiene retorno
+   */
+  eliminarEmpleado(empleado1: Empleado){
+    this.empleado = empleado1;
+    console.log("EliminarEmpleado:::", this.empleado);
+    this.showModalEliminarEmpleado = true;
+    this.empleadoService.$modalShowEliminarEmpleado.emit(this.showModalEliminarEmpleado);
+  }
 
 
  

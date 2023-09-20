@@ -92,10 +92,12 @@ export class ModalActualizarEmpleadoComponent implements OnInit {
         this.showModalError = true;
         this.empleadoService.$modalShowErrorCrearEmpleado.emit(this.showModalError);
       }
-    });
+    });     
+  }
 
-
-     
+  cancelar(){
+    this.showModalActualizarEmpleado = false;
+    this.empleadoService.$modalShowEmpleadoEnviado.emit(this.showModalActualizarEmpleado);
   }
 
 

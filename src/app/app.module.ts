@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CrearEmpleadoComponent } from './crear-empleado/crear-empleado.component';
 import { VerListaEmpleadosComponent } from './ver-lista-empleados/ver-lista-empleados.component';
-import { ActualizarEmpleadoComponent } from './actualizar-empleado/actualizar-empleado.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalErrorComponent } from './modal-error/modal-error.component';
@@ -21,7 +20,6 @@ import { ModalActualizarEmpleadoComponent } from './ver-lista-empleados/modal-ac
     AppComponent,
     CrearEmpleadoComponent,
     VerListaEmpleadosComponent,
-    ActualizarEmpleadoComponent,
     ModalErrorComponent,
     ModalEmpleadoEnviadoComponent,
     ModalEliminarEmpleadoComponent,
