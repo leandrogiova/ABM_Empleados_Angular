@@ -17,16 +17,16 @@ import { Output } from '@angular/core';
 export class VerListaEmpleadosComponent implements OnInit {
 
   listaEmpleados: Array<Empleado> = [];
-
+  empleadosFiltrados: Array<Empleado> = [];
   activarBoton: boolean = false;
   error: Error;
   showModalError: boolean = false;
   showModalEliminarEmpleado: boolean = false;
+  mostrarLitaDeEmpleados = false;
 
   @Output() empleado: Empleado;
   showModalActualizar: boolean = false; //Se reutiliza el observable $modalShowEmpleadoEnviado para mostrar/ocultar el modal de actualizar empleado
-
-
+  terminoBusqueda: string = '';
 
   constructor(private empleadoService: EmpleadoService){
     this.empleado = new Empleado();
@@ -128,57 +128,5 @@ public verEmpleados(){
     this.empleadoService.$modalShowEliminarEmpleado.emit(this.showModalEliminarEmpleado);
   }
 
-
  
 }
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  // public verEmpleados(): Array<Empleado>{
-
-  //   this.empleadoService.obtenerTodosLosEmpleados().subscribe({
-  //     next: (result) => {
-  //       this.listaEmpleados.push(result); 
-  //       console.log(result);
-  //     },
-  //     error: (e) => {
-  //       console.log("\n\n\nMostrando el error: ");
-  //       console.log(e);
-  //       console.log("\n\n");
-
-  //       console.log("\nStatus: ");
-  //       console.log(e.status);
-  //       console.log("\n\n");
-
-  //       console.log("\Code status: ");
-  //       console.log(e.statusCode);
-  //       console.log("\n\n");
-        
-  //     }
-
-  //   })
-
-
-
-
-  //   console.log("Viendo empleados: \n", this.empleadoService.obtenerTodosLosEmpleados());
-  //   return this.listaEmpleados;
-
-  // }
-
-

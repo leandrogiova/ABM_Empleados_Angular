@@ -1,17 +1,24 @@
 # ABMEmpleados
 
-Se va ha creado 4 componentes principales:
+Se va ha creado 2 componentes principales:
  1- Para agregar un nuevo empleado
  2 - Para ver a todos los empleados y para buscar un empleado
- 3 - Para Editar algun empleado
 
- No se ha ningun modulo ya que, para este proyecto en especificado se considero no crear un modulo en espefifico
+Dentro de estos componenetes se han creado otros componenetes modales para utilizar como ventanas emergentes para un mejor manejo de la aplicación y que así sea mas
+facil para el usuario.
+
+Para modificar algun dato del empleado se debe visitar al componente con la lista de todos los empleados y luego modificar emppleado. Allí se desplegara una ventana
+emegente con un formulario para actualizar los datos del empleado, cumpliendo con todas las validaciones.
+
+ No se ha creado ningun modulo ya que, para este proyecto en especificado se considero no crear un modulo en espefifico.
 
 
 Al ingresar en el componente "ver-lista-empleado", este commponente se abrira en una nueva pestaña del navegador web para mayor comodidad del usuario.
 
 Se ha creado una clase particular "empleadoValidators" para validar que no se ingrese una fecha posterior al dia actual. Y que no se pueda ingredar nombre con otros caracteres que no sean letras.
 
+Además se ha creado un Pipe "buscar-empleado.pipe.ts" dentro del componente "ver-lista-empleados" para buscar un empleado por su nombre, apellido, mail o nro de Documento.
+Con este pipe se resolvio la problematica de filtrar la lista de empleados de una manera mas sencilla y rapida.
 
 
 

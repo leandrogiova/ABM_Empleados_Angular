@@ -12,6 +12,7 @@ import { ModalErrorComponent } from './modal-error/modal-error.component';
 import { ModalEmpleadoEnviadoComponent } from './crear-empleado/modal-empleado-enviado/modal-empleado-enviado.component';
 import { ModalEliminarEmpleadoComponent } from './ver-lista-empleados/modal-eliminar-empleado/modal-eliminar-empleado.component';
 import { ModalActualizarEmpleadoComponent } from './ver-lista-empleados/modal-actualizar-empleado/modal-actualizar-empleado.component';
+import { BuscarEmpleadoPipe } from './ver-lista-empleados/buscar-empleado.pipe';
 
 
 
@@ -23,7 +24,8 @@ import { ModalActualizarEmpleadoComponent } from './ver-lista-empleados/modal-ac
     ModalErrorComponent,
     ModalEmpleadoEnviadoComponent,
     ModalEliminarEmpleadoComponent,
-    ModalActualizarEmpleadoComponent
+    ModalActualizarEmpleadoComponent,
+    BuscarEmpleadoPipe
   ],
   imports: [
     BrowserModule,

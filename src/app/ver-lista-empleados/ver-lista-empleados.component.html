@@ -1,15 +1,12 @@
-<h2>
-    Ver Lista de Empleados
-</h2>
+<div class = "espacioittulo">
+  <h2>
+      Ver Lista de Empleados
+  </h2>
+  <button class = "btn btn-primary" (click) = "verEmpleados()"> Actualizar Lista </button>
+  <input type="text" class="input-group-text espacioespaciobotonBuscar" [(ngModel)]="terminoBusqueda" placeholder="Buscar un Empleado">
+</div>
 
-<!-- //TODO falta borrar un empleado !-->
-
-<button class = "btn btn-primary" (click) = "verEmpleados()"> Actualizar Lista </button>
-<p>
-  Mantenga la lista siempre actualizada
-<p>
-
-<table>
+<table > 
     <thead>
       <tr>
         <th>Id</th>
@@ -26,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = "let empleado of listaEmpleados">
+      <tr *ngFor = "let empleado of listaEmpleados | buscarEmpleado: terminoBusqueda">
         <td><strong>{{empleado.id}}</strong></td>
         <td>{{empleado.nombre}} </td>
         <td>{{empleado.apellido}}</td>
@@ -51,9 +48,3 @@
 <app-modal-actualizar-empleado *ngIf ="showModalActualizar" [empleadoModal] = "empleado"> </app-modal-actualizar-empleado>
 
 <app-modal-eliminar-empleado *ngIf ="showModalEliminarEmpleado" [empleadoModal] = "empleado"> </app-modal-eliminar-empleado>
-
-<!-- 
-<app-modal-empleado-enviado *ngIf="modalEmpleadoEnviado"  [empleadoModal]= "empleado"> </app-modal-empleado-enviado>
-
-<app-modal-error *ngIf="showModalError"  [errorInModal] = "error"> </app-modal-error> -->
-

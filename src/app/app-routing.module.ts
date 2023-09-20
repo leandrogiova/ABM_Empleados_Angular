@@ -9,14 +9,6 @@ const routes: Routes = [
 
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},  // cuando no se le especifica nada entra en home
   {path: '**', component: Error}  // cuando no matchea con nada entra en error 404 - no encontrado
-
-
-
-
-  // {path: 'menu', component: MenuComponent, canActivate: [AuthGuard]},
-  // {path: 'login', component: LoginComponent},
-  // {path: 'home', component: MesasPrincipalComponent, canActivate: [AuthGuard]},
-  // {path: 'productos', component: ProductosPrincipalComponent, canActivate: [AuthGuard]},
  
 ];
 
