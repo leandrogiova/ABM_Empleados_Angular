@@ -1,6 +1,18 @@
 import { Validators, AbstractControl } from '@angular/forms';
 import {FormGroup, ValidationErrors } from '@angular/forms';
 
+
+/*
+ * Funcion fechaNoPosterior
+ * Es un tipo de validador que se utiliza para las fechas
+ * Donde NO va a permitir que se ingresen fechas posteriores a la actual
+ * Se va a setear una fecha actual y una fecha ingresada por formulario
+ * Si la fecha ingresada por formulario es mayor a la actual no se setea el campo y se retorna 'fechaNoPosterior': true. Es decir que
+ * esta fecha no es valida.
+ * Si la fecha es valida se retorna null
+ * Recibe un AbstractControl
+ * Retorna null si la fecha es anterior a la fecha actual
+ */
 export function fechaNoPosterior(control: AbstractControl): { [key: string]: boolean } | null {
   const fechaNacimiento = new Date(control.value);
   const fechaActual = new Date();
@@ -16,7 +28,17 @@ export function fechaNoPosterior(control: AbstractControl): { [key: string]: boo
 
 
 
-
+/*
+ * Funcion edadMayorA18
+ * Es un tipo de validador que se utiliza para las fecha de nacimiento del empleado
+ * Va a permitir que se ingresen solamente una fecha donde la edad del empleado no supere una fecha que sea menor a 18años
+ * Para esto se setea una variable con la fecha actual, una variable con la edad minima. Y la facha que se ingreso a traves del formulario
+ * Se restan los dos años(el año ingresado por furmulario y el año actual) y si da menor a 18 se retorna 'edadNoValida': true.
+ * Este es el caso donde no se debe guardar la fecha. Retorna null si la fecha es valida
+ * Recibe un AbstractControl
+ * Retorna null si la fecha es menor a la edad minima(edadMinima = 18)
+ * 
+*/
 export function edadMayorA18(control: AbstractControl): { [key: string]: boolean } | null {
   const fechaNacimiento = new Date(control.value);
   const fechaActual = new Date();

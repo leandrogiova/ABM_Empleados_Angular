@@ -13,24 +13,20 @@ import { Output } from '@angular/core';
   templateUrl: './crear-empleado.component.html',
   styleUrls: ['./crear-empleado.component.css']
 })
-export class CrearEmpleadoComponent implements OnInit {
+export class CrearEmpleadoComponent {
   
   @Output() empleado: Empleado;
   @Output() error: Error;
   showModalError: boolean = false;
   modalEmpleadoEnviado: boolean = false;
-  
-
-
-  
   agregarEmpleado: FormGroup;
 
+
+
   constructor(private fb: FormBuilder, private empleadoService: EmpleadoService){
-
-
     this.empleado = new Empleado();
     this.error = new Error();
-    
+  
     this.agregarEmpleado = this.fb.group({
       nombre: new FormControl('', [Validators.required, nombreValido]),
       apellido: new FormControl('', [Validators.required, nombreValido]),
@@ -44,9 +40,7 @@ export class CrearEmpleadoComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
 
-  }
 
   /*
    * Funcion agregarEmpleadoNuevo
@@ -72,12 +66,10 @@ export class CrearEmpleadoComponent implements OnInit {
     this.empleado.email = this.agregarEmpleado.get('email')?.value;
     this.empleado.fechaNacimiento = this.agregarEmpleado.get('fechaNacimiento')?.value;
     this.empleado.fechaIngreso = this.agregarEmpleado.get('fechaIngreso')?.value;
-
-    
+ 
     this.empleadoService.crearEmpleado(this.empleado).subscribe({
       next: (result) => {
         this.agregarEmpleado.reset();
-
 
         this.modalEmpleadoEnviado = true;
         this.empleadoService.$modalShowEmpleadoEnviado.emit(this.modalEmpleadoEnviado);

@@ -21,7 +21,8 @@ Además se ha creado un Pipe "buscar-empleado.pipe.ts" dentro del componente "ve
 Con este pipe se resolvio la problematica de filtrar la lista de empleados de una manera mas sencilla y rapida.
 
 
-
+Se ha creado una clase error dentro de models para manejar la respuesta del BackEnd cuando arroja un error.
+Asi se captura el status y el mensaje del error que responde el BackEnd
 
 
 

@@ -22,14 +22,21 @@ export class ModalEmpleadoEnviadoComponent implements OnInit {
 
   }
 
+  /*
+   * Actuazliza el valor de la variable "showmodalEmpleandoEnv"
+   */
   ngOnInit(): void {
-    console.log("En el modal Empleado enviado: empleado:" , this.empleadoModal);
     this.empleadoService.$modalShowEmpleadoEnviado.subscribe( (valor) => { this.showmodalEmpleandoEnv = valor} );
-    console.log("viendo showmodalEmpleadoEnviado: " , this.showmodalEmpleandoEnv);
   }
 
-  
 
+  
+  
+  /*
+   * Funcion cerrarModal
+   * Setea las variable "showmodalEmpleandoEnv" en false para ocultar el modal con los datos del empleado que se acaba de crear
+   * Emite a través del observable el valor para mantener la variable actualizada
+   */
   public cerrarModal(): void{
     this.showmodalEmpleandoEnv = false;
     this.empleadoService.$modalShowEmpleadoEnviado.emit(this.showmodalEmpleandoEnv);
